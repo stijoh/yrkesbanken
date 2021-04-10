@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_164024) do
+ActiveRecord::Schema.define(version: 2021_04_10_173229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "features", force: :cascade do |t|
+    t.string "title"
+    t.bigint "profession_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profession_id"], name: "index_features_on_profession_id"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "title"
+    t.bigint "profession_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profession_id"], name: "index_materials_on_profession_id"
+  end
+
+  create_table "professions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_professions_on_topic_id"
+  end
 
   create_table "subjects", force: :cascade do |t|
     t.string "title"
@@ -21,6 +45,30 @@ ActiveRecord::Schema.define(version: 2021_04_10_164024) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_subjects_on_user_id"
+  end
+
+  create_table "techniques", force: :cascade do |t|
+    t.string "title"
+    t.bigint "profession_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profession_id"], name: "index_techniques_on_profession_id"
+  end
+
+  create_table "terms", force: :cascade do |t|
+    t.string "title"
+    t.bigint "profession_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profession_id"], name: "index_terms_on_profession_id"
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "title"
+    t.bigint "profession_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["profession_id"], name: "index_tools_on_profession_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -44,6 +92,12 @@ ActiveRecord::Schema.define(version: 2021_04_10_164024) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "features", "professions"
+  add_foreign_key "materials", "professions"
+  add_foreign_key "professions", "topics"
   add_foreign_key "subjects", "users"
+  add_foreign_key "techniques", "professions"
+  add_foreign_key "terms", "professions"
+  add_foreign_key "tools", "professions"
   add_foreign_key "topics", "subjects"
 end
