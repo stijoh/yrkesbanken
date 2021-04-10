@@ -5,4 +5,5 @@ class Profession < ApplicationRecord
   has_many :tools, dependent: :destroy
   has_many :techniques, dependent: :destroy
   has_many :terms, dependent: :destroy
+  validates :title, presence: true
 end
