@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_173229) do
+ActiveRecord::Schema.define(version: 2021_04_10_173543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2021_04_10_173229) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["profession_id"], name: "index_features_on_profession_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "subject_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_goals_on_subject_id"
   end
 
   create_table "materials", force: :cascade do |t|
@@ -45,6 +54,15 @@ ActiveRecord::Schema.define(version: 2021_04_10_173229) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_subjects_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title"
+    t.text "desctiption"
+    t.bigint "topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_tasks_on_topic_id"
   end
 
   create_table "techniques", force: :cascade do |t|
@@ -93,9 +111,11 @@ ActiveRecord::Schema.define(version: 2021_04_10_173229) do
   end
 
   add_foreign_key "features", "professions"
+  add_foreign_key "goals", "subjects"
   add_foreign_key "materials", "professions"
   add_foreign_key "professions", "topics"
   add_foreign_key "subjects", "users"
+  add_foreign_key "tasks", "topics"
   add_foreign_key "techniques", "professions"
   add_foreign_key "terms", "professions"
   add_foreign_key "tools", "professions"
