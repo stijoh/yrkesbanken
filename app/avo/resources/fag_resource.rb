@@ -9,4 +9,8 @@ class FagResource < Avo::BaseResource
   field :kompetansemaal, as: :has_one
   field :yrkes, as: :has_many
   field :materials, as: :has_many
+  field :saertrekks, as: :has_many
+  field :fagutrykks, as: :has_many
+  field :verktoys, as: :has_many
+  field :teknikks, as: :has_many
 end
