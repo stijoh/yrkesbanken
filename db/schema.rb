@@ -50,10 +50,8 @@ ActiveRecord::Schema.define(version: 2021_04_10_221829) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "title"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_subjects_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -114,7 +112,6 @@ ActiveRecord::Schema.define(version: 2021_04_10_221829) do
   add_foreign_key "goals", "subjects"
   add_foreign_key "materials", "professions"
   add_foreign_key "professions", "topics"
-  add_foreign_key "subjects", "users"
   add_foreign_key "tasks", "topics"
   add_foreign_key "techniques", "professions"
   add_foreign_key "terms", "professions"
