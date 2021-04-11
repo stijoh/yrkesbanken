@@ -10,89 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_221829) do
+ActiveRecord::Schema.define(version: 2021_04_11_130039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "features", force: :cascade do |t|
-    t.string "title"
-    t.bigint "profession_id", null: false
+  create_table "fags", force: :cascade do |t|
+    t.string "navn"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["profession_id"], name: "index_features_on_profession_id"
   end
 
-  create_table "goals", force: :cascade do |t|
-    t.bigint "subject_id", null: false
+  create_table "fagutrykks", force: :cascade do |t|
+    t.string "navn"
+    t.bigint "yrke_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "title"
-    t.text "description"
-    t.index ["subject_id"], name: "index_goals_on_subject_id"
+    t.index ["yrke_id"], name: "index_fagutrykks_on_yrke_id"
+  end
+
+  create_table "kompetansemaals", force: :cascade do |t|
+    t.string "navn"
+    t.text "beskrivelse"
+    t.bigint "fag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fag_id"], name: "index_kompetansemaals_on_fag_id"
   end
 
   create_table "materials", force: :cascade do |t|
-    t.string "title"
-    t.bigint "profession_id", null: false
+    t.string "navn"
+    t.bigint "yrke_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["profession_id"], name: "index_materials_on_profession_id"
+    t.index ["yrke_id"], name: "index_materials_on_yrke_id"
   end
 
-  create_table "professions", force: :cascade do |t|
-    t.string "title"
-    t.bigint "topic_id", null: false
+  create_table "oppgavers", force: :cascade do |t|
+    t.string "navn"
+    t.text "beskrivelse"
+    t.bigint "tema_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["topic_id"], name: "index_professions_on_topic_id"
+    t.index ["tema_id"], name: "index_oppgavers_on_tema_id"
   end
 
-  create_table "subjects", force: :cascade do |t|
-    t.string "title"
+  create_table "saertrekks", force: :cascade do |t|
+    t.string "navn"
+    t.bigint "yrke_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["yrke_id"], name: "index_saertrekks_on_yrke_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.bigint "topic_id", null: false
+  create_table "teknikks", force: :cascade do |t|
+    t.string "navn"
+    t.bigint "yrke_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["topic_id"], name: "index_tasks_on_topic_id"
+    t.index ["yrke_id"], name: "index_teknikks_on_yrke_id"
   end
 
-  create_table "techniques", force: :cascade do |t|
-    t.string "title"
-    t.bigint "profession_id", null: false
+  create_table "temas", force: :cascade do |t|
+    t.string "navn"
+    t.bigint "fag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["profession_id"], name: "index_techniques_on_profession_id"
-  end
-
-  create_table "terms", force: :cascade do |t|
-    t.string "title"
-    t.bigint "profession_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["profession_id"], name: "index_terms_on_profession_id"
-  end
-
-  create_table "tools", force: :cascade do |t|
-    t.string "title"
-    t.bigint "profession_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["profession_id"], name: "index_tools_on_profession_id"
-  end
-
-  create_table "topics", force: :cascade do |t|
-    t.string "title"
-    t.bigint "subject_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["subject_id"], name: "index_topics_on_subject_id"
+    t.index ["fag_id"], name: "index_temas_on_fag_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,13 +92,29 @@ ActiveRecord::Schema.define(version: 2021_04_10_221829) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "features", "professions"
-  add_foreign_key "goals", "subjects"
-  add_foreign_key "materials", "professions"
-  add_foreign_key "professions", "topics"
-  add_foreign_key "tasks", "topics"
-  add_foreign_key "techniques", "professions"
-  add_foreign_key "terms", "professions"
-  add_foreign_key "tools", "professions"
-  add_foreign_key "topics", "subjects"
+  create_table "verktoys", force: :cascade do |t|
+    t.string "navn"
+    t.bigint "yrke_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["yrke_id"], name: "index_verktoys_on_yrke_id"
+  end
+
+  create_table "yrkes", force: :cascade do |t|
+    t.string "navn"
+    t.bigint "tema_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tema_id"], name: "index_yrkes_on_tema_id"
+  end
+
+  add_foreign_key "fagutrykks", "yrkes"
+  add_foreign_key "kompetansemaals", "fags"
+  add_foreign_key "materials", "yrkes"
+  add_foreign_key "oppgavers", "temas"
+  add_foreign_key "saertrekks", "yrkes"
+  add_foreign_key "teknikks", "yrkes"
+  add_foreign_key "temas", "fags"
+  add_foreign_key "verktoys", "yrkes"
+  add_foreign_key "yrkes", "temas"
 end

@@ -2,8 +2,10 @@
 
 one:
   navn: MyString
-  yrke: one
+  beskrivelse: MyText
+  fag: one
 
 two:
   navn: MyString
-  yrke: two
+  beskrivelse: MyText
+  fag: two

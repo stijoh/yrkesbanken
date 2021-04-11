@@ -1,22 +1,22 @@
 
 User.create!(email: "stian.a.johansen@gmail.com", password: "123456")
 
-Subject.create!(title: "kunst og håndverk")
+Fag.create!(navn: "kunst og håndverk")
 
-Topic.create!(title: "søm", subject: Subject.first)
+Tema.create!(navn: "søm", fag: Fag.first)
 
-Task.create!(title: "ny oppgave", description: "stian er best", topic: Topic.last)
+Oppgaver.create!(navn: "ny oppgave", beskrivelse: "stian er best", tema: Tema.last)
 
-Goal.create!(title: "test", description: "teste som faen", subject: Subject.last)
+Kompetansemaal.create!(navn: "test", beskrivelse: "teste som faen", fag: Fag.last)
 
-Profession.create!(title: "Kostyme designer", topic: Topic.first)
+Yrke.create!(navn: "Kostyme designer", tema: Tema.first)
 
-Material.create!(title: "Tråd", profession: Profession.last)
+Material.create!(navn: "Tråd", yrke: Yrke.last)
 
-Feature.create!(title: "kjedelig", profession: Profession.last)
+Saertrekk.create!(navn: "kjedelig", yrke: Yrke.last)
 
-Tool.create!(title: "nål", profession: Profession.last)
+Verktoy.create!(navn: "nål", yrke: Yrke.last)
 
-Technique.create!(title: "symaskin", profession: Profession.last)
+Teknikk.create!(navn: "symaskin", yrke: Yrke.last)
 
-Term.create!(title: "test", profession: Profession.last)
+Fagutrykk.create!(navn: "test", yrke: Yrke.last)

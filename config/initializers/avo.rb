@@ -6,6 +6,8 @@ Avo.configure do |config|
   config.license = 'community'
   # config.license_key = ENV['AVO_LICENSE_KEY']
 
+  config.display_breadcrumbs = false
+
   ## == Set the context ==
   config.set_context do
     # Return a context object that gets evaluated in Avo::ApplicationController
