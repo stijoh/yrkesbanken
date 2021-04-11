@@ -1,5 +1,3 @@
 class Material < ApplicationRecord
-  belongs_to :profession
-  validates :title, presence: true
-
+  belongs_to :yrke
 end

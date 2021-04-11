@@ -2,8 +2,8 @@
 
 one:
   navn: MyString
-  yrke: one
+  tema: one
 
 two:
   navn: MyString
-  yrke: two
+  tema: two
