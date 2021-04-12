@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'pages#landing'
+
   authenticate :user do
     mount Avo::Engine => '/avo'
   end
