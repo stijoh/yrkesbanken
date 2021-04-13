@@ -12,7 +12,8 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-indigo-50 h-screen w-screen pt-10">
+  <body class="bg-indigo-50 h-screen w-screen">
+   <%= render 'shared/navbar' %>
     <%= yield %>
   </body>
 </html>

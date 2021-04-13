@@ -1,0 +1,33 @@
+ <div class="mx-auto bg-purple-300 p-5">
+    <nav class="flex justify-between">
+        <div>
+            <a href="#">Logo</a>
+        </div>
+        <p id="hamburgerbtn" class="md:hidden">
+             <i class="fas fa-bars"></i>
+           </p>
+        <ul class="hidden md:flex md:flex-row" id="mobileMenu">
+            <li class="pr-5"><a>Om tjeneste </a></li>
+            <li class="pr-5"><a>Kontakt</a></li>
+            <li class="pr-5"><a>Logg inn</a></li>
+        </ul>
+    </nav>
+</div>
+
+
+
+<style>
+    .active{
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function(){
+        mobileMenu.classList.toggle('active');
+    });
+</script>
