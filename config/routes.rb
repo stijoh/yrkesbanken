@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     mount Avo::Engine => '/avo'
   end
 
-  devise_for :users
+  devise_for :users, skip: %i[registrations]
   get '/linus', to: 'pages#linus'
 
 end

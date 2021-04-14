@@ -25,12 +25,25 @@
                 href="#">Kontakt
               </a>
             </li>
+            <% if !user_signed_in? %>
             <li class="flex items-center">
               <a
                 class="lg:text-white lg:hover:text-gray-300 text-black-800 px-3 py-4 lg:py-2 flex items-center text-base uppercase font-bold"
                 href="<%= new_user_session_path %>">Logg inn
               </a>
             </li>
+            <% else %>
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-black-800 px-3 py-4 lg:py-2 flex items-center text-base uppercase font-bold"
+                href="/avo">admin
+              </a>
+            </li>
+            <li class="flex items-center">
+              <%= link_to "Logg ut", destroy_user_session_path, method: :delete, class: "lg:text-white lg:hover:text-gray-300 text-black-800 px-3 py-4 lg:py-2 flex items-center text-base uppercase font-bold" %>
+            </li>
+
+            <% end %>
           </ul>
         </div>
       </div>
