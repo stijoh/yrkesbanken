@@ -3,6 +3,7 @@
   <head>
     <title>Yrkesbasen</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#000000" />
     <%= favicon_link_tag asset_path('yrkesbasen_favicon.png') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,8 +13,7 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-indigo-50 h-screen w-screen">
-   <%= render 'shared/navbar' %>
+  <body>
     <%= yield %>
   </body>
 </html>

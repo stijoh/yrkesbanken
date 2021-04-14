@@ -1,1 +1,70 @@
-bobbobbob
+<%= render 'shared/navbar' %>
+<main>
+  <div
+    class="relative pt-16 pb-32 flex content-center items-center justify-center"
+    style="min-height: 75vh;">
+    <div
+      class="absolute top-0 w-full h-full bg-center bg-cover"
+      style='background-image: url("/assets/yrkesbanken_hero2.png");'>
+      <span
+        id="blackOverlay"
+        class="w-full h-full absolute opacity-75 bg-black">
+      </span>
+    </div>
+    <div class="container relative mx-auto">
+      </div>
+    </div>
+  </div>
+  <section class="pb-20 bg-purple-200 -mt-24">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap">
+        <div class="lg:pt-9 pt-6 w-full md:w-4/12 px-4 text-center">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <div class="px-4 py-5 flex-auto">
+              <div
+                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded bg-indigo-400">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h6 class="text-xl font-semibold">Kunnskap</h6>
+              <p class="mt-2 mb-4 text-gray-600">
+                Yrkesfaglig kunnskap for lærere på ungdomstrinnet.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-4/12 px-4 text-center">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <div class="px-4 py-5 flex-auto">
+              <div
+                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded bg-pink-300">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h6 class="text-xl font-semibold">Verktøy</h6>
+              <p class="mt-2 mb-4 text-gray-600">
+                Et eller annet fornuftig om hva slags verktøy dette her. Og kanskje noe om at man også kan finne oppgaver her.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="pt-12 w-full md:w-4/12 px-4 text-center">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <div class="px-4 py-5 flex-auto">
+              <div
+                class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded bg-purple-300">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <h6 class="text-xl font-semibold">Kompetansemål</h6>
+              <p class="mt-2 mb-4 text-gray-600">
+                Et par linjer om at man har kompetansemålene knyttet til praktiske fag.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<%= render 'shared/footer' %>
