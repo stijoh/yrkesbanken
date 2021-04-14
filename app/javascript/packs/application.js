@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 
 require("stylesheets/application.scss");
+require("packs/toggle");
 
 Rails.start();
 Turbolinks.start();

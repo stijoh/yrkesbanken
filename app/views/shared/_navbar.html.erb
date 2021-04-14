@@ -1,0 +1,43 @@
+<nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
+      <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <a class="mr-4 py-2"
+            href="<%= root_path %>"><%= image_tag 'yrkesbanken_logo_small_white.png'%></a>
+            <button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onclick="toggleNavbar('yrkesbasen_navbar')">
+            <i class="text-white fas fa-bars"></i>
+          </button>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"id="yrkesbasen_navbar">
+          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-black-800 px-3 py-4 lg:py-2 flex items-center text-lg uppercase font-bold"
+                href="#">Fag
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-black-800 px-3 py-4 lg:py-2 flex items-center text-lg uppercase font-bold"
+                href="#">Kontakt
+              </a>
+            </li>
+            <li class="flex items-center">
+              <a
+                class="lg:text-white lg:hover:text-gray-300 text-black-800 px-3 py-4 lg:py-2 flex items-center text-lg uppercase font-bold"
+                href="<%= new_user_session_path %>">Logg inn
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <script>
+    function toggleNavbar(collapseID) {
+      document.getElementById(collapseID).classList.toggle("hidden");
+      document.getElementById(collapseID).classList.toggle("block");
+    }
+  </script>
