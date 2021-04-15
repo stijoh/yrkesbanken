@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
-  def linus; end
+  def fag
+    @fag = Fag.find(params[:id])
+  end
 
   def landing; end
 
