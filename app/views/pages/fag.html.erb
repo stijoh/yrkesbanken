@@ -1,4 +1,4 @@
-<%= render 'shared/navbar' %>
+<%= render 'shared/navbar', fag: @menu_fag %>
 
 <section class="pb-20 bg-purple-200 -mt-24">
     <div class="container mx-auto px-4">
@@ -6,93 +6,87 @@
         <div class="w-full md:w-4/12 lg:w-3/12 px-4">
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg sticky top-5">
             <div class="px-4 py-5 flex-auto">
-              
               <h6 class="text-xl font-semibold"><%= @fag.navn.capitalize %></h6>
               <p class="mt-2 mb-4 text-gray-600">
-                <ul class="list-none list-inside pr-4"
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Kompetansemål</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Oppgaver</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Tema</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Yrker</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Særtrekk</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Fagutrykk</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Materialer</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Teknikker</a></li>
-                    <li><a href="#" class="text-black-600 hover:text-gray-900 pl-4">Verktøy</a></li>
-                </ul>
+                <div class=" pr-4">
+                  <div>
+                    <a href="/fag/<%= @fag.id %>#kompetanse" class="text-black-900 hover:text-gray-900 font-semibold pl-4">Kompetansemål</a>
+                  </div>
+                  <div class="mt-2">
+                    <span class="pl-4 font-semibold">Tema:</span>
+                    <hr>
+                  </div>
+                    <% @fag.temas.each do |tema| %>
+                  <div>
+                    <a href="?tema=<%= tema.id %>#tema"  class="text-gray-900 hover:text-gray-900 font-semibold pl-8"><%= tema.navn.capitalize %></a>
+                  </div>
+                    <% end %>
+                    <% if params[:tema].present? %>
+                  <div class="mt-2">
+                    <span class="pl-4 font-semibold">Yrke:</span>
+                    <hr>
+                  </div>
+                    <% @yrker.each do |yrke| %>
+                  <div>
+                    <a href="?tema=<%= params[:tema] %>&yrke=<%= yrke.id %>#yrke" class="text-gray-900 hover:text-gray-900 pl-8 font-semibold"><%= yrke.navn %></a>
+                  </div>
+                    <% end %>
+                    <% end %>
+                </div>
               </p>
             </div>
           </div>
         </div>
-        <div class="w-full md:w-8/12 lg:w-9/12 px-4 pt-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+        <div class="w-full md:w-8/12 lg:w-9/12 px-4">
+          <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+            <% if !params[:tema].present?%>
             <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
+              <span id="kompetanse" class="font-semibold">Kompetansemål</span>
               <p class="mt-2 mb-4 text-gray-600">
               </p>
             </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
+            <% end %>
+            <% if params[:tema].present?%>
+            <div class="px-4 py-5 flex-auto align-center justify-center text-center items-center">
+              <span id="tema" class="font-semibold">Tema: <%= @tema.navn.capitalize if @tema%></span>
+            </div>
+            <div class="px-4 py-5">
+              <p class="mt-2 mb-4 text-black">
+                <span class="font-semibold">Oppgaver: </span>
+                <% @oppgaver.each do |oppgave| %>
+                  <p><%= oppgave.navn %></p>
+                <% end %>
               </p>
             </div>
+            <% end %>
+            <% if params[:yrke].present?%>
             <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
+              <p class="mt-2 mb-4 text-black">
+                <span id="yrke" class="font-semibold">Yrker: </span>
+                <% @yrker.each do |yrke| %>
+                  <p><%= yrke.navn %></p>
+                <% end %>
               </p>
             </div>
+            <% end %>
             <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
-            <div class="px-4 py-5 flex-auto">
-              <span class="font-semibold">Kompetansemål</span>
-              <p class="mt-2 mb-4 text-gray-600">
-              </p>
-            </div>
 
+            </div>
+            <div class="px-4 py-5 flex-auto">
+
+            </div>
+            <div class="px-4 py-5 flex-auto">
+
+            </div>
+            <div class="px-4 py-5 flex-auto">
+
+            </div>
+            <div class="px-4 py-5 flex-auto">
+
+            </div>
+            <div class="px-4 py-5 flex-auto">
+
+            </div>
           </div>
         </div>
       </div>
