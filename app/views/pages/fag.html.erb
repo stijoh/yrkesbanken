@@ -53,8 +53,11 @@
             <div class="px-4 py-5">
               <p class="mt-2 mb-4 text-black">
                 <span class="font-semibold">Oppgaver: </span>
+                <% if @oppgaver.present? %>
                 <% @oppgaver.each do |oppgave| %>
-                  <p><%= oppgave.navn %></p>
+                  <p class="font-semibold"><%= oppgave.navn.capitalize %>:</p>
+                  <p><%= oppgave.beskrivelse %></p>
+                <% end %>
                 <% end %>
               </p>
             </div>
@@ -63,15 +66,60 @@
             <div class="px-4 py-5 flex-auto">
               <p class="mt-2 mb-4 text-black">
                 <span id="yrke" class="font-semibold">Yrker: </span>
+                <% if @yrker.present?%>
                 <% @yrker.each do |yrke| %>
-                  <p><%= yrke.navn %></p>
+                  <p><%= yrke.navn.capitalize %></p>
+                <% end %>
                 <% end %>
               </p>
             </div>
-            <% end %>
-            <div class="px-4 py-5 flex-auto">
+            <div class="px-4 py-5  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+            <div class="pr-10 font-semibold">Materialer:
+              <ul class="font-normal pl-3 pb-4">
+                <% if @materialer.present? %>
+                <% @materialer.each do |material|%>
+                <li>- <%= material.navn.capitalize %></li>
+                <% end %>
+                <% end %>
+              </ul>
+            </div>
+            <div class="pr-10 font-semibold">Teknikker:
+              <ul class="font-normal pl-3 pb-4">
+                <% @teknikker.each do |teknikk|%>
+                  <li>- <%= teknikk.navn.capitalize %></li>
+                <% end %>
+              </ul>
+            </div>
+            <div class="pr-10 font-semibold">Verktøy:
+              <ul class="font-normal pl-3 pb-4">
+                <% if @verktoy.present? %>
+                <% @verktoy.each do |verk|%>
+                  <li>- <%= verk.navn.capitalize %></li>
+                <% end %>
+                <% end %>
+              </ul>
+            </div>
+            <div class="pr-10 font-semibold">Fagutrykk:
+              <ul class="font-normal pl-3 pb-4">
+                <% if @fagutrykk.present? %>
+                <% @fagutrykk.each do |fagutrk|%>
+                  <li>- <%= fagutrk.navn.capitalize %></li>
+                <% end %>
+                <% end %>
+              </ul>
+            </div>
+            <div class="pr-10 font-semibold">Særpreg:
+              <ul class="font-normal pl-3 pb-4">
+                <% if @saertrekk.present? %>
+                <% @saertrekk.each do |saertrk|%>
+                  <li>- <%= saertrk.navn.capitalize %></li>
+                <% end %>
+                <% end %>
+              </ul>
+            </div>
 
             </div>
+            <% end %>
             <div class="px-4 py-5 flex-auto">
 
             </div>
