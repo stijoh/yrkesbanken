@@ -4,6 +4,6 @@ class OppgaverResource < Avo::BaseResource
 
   field :id, as: :id
   field :navn, as: :text
-  field :beskrivelse, as: :trix
+  field :beskrivelse, as: :trix, attachment_key: :files
   field :tema, as: :belongs_to
 end
