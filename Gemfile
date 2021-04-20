@@ -31,7 +31,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
-gem 'avo', '~> 1.3.5.pre.1'
+gem 'avo', '1.4.0.pre.1'
 gem 'cloudinary', '~> 1.16.0'
 
 group :development, :test do

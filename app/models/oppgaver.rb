@@ -1,4 +1,4 @@
 class Oppgaver < ApplicationRecord
   belongs_to :tema
-  has_many_attached :files
+  has_one_attached :file
 end
