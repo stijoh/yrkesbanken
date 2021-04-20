@@ -2,15 +2,12 @@
 <html>
 <head>
   <%= display_meta_tags site: Avo.configuration.app_name, reverse: true, separator: "—" %>
-  <%= favicon_link_tag asset_path('yrkesbasen_favicon.png') %>
-
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= render partial: 'avo/partials/javascript' %>
-
-  <%= javascript_pack_tag 'application' %>
-  <%= stylesheet_pack_tag 'application', media: 'all' %>
+  <%= render partial: 'avo/partials/head' %>
+  <%= javascript_manifest_tag 'application' %>
+  <%= stylesheet_manifest_tag 'application', media: 'all' %>
 </head>
 <body class="bg-blue-gray-200">
 
@@ -32,6 +29,7 @@
 
       <div class="content p-8 flex-1 flex flex-col justify-between items-stretch <%= @container_classes %>">
         <%= render partial: "avo/partials/custom_tools_alert" if @custom_tools_alert_visible %>
+
         <div class="flex flex-1 flex-col justify-between items-stretch">
           <%= yield %>
           <%= render partial: "avo/partials/footer" %>
@@ -42,7 +40,6 @@
   <%= turbo_frame_tag 'actions_show' %>
   <%= turbo_frame_tag 'attach_modal' %>
   <%= turbo_frame_tag 'destroy_attachment_form' %>
-
   <%= turbo_frame_tag 'alerts' do %>
     <%= render partial: 'avo/partials/alerts' %>
   <% end %>
