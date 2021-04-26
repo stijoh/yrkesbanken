@@ -1,4 +1,14 @@
 
+puts "destroying stuff"
+
+User.destroy_all
+
+Fag.destroy_all
+
+puts "done"
+
+puts "creating stuff"
+
 User.create!(email: "stian.a.johansen@gmail.com", password: "123456")
 
 Fag.create!(navn: "kunst og håndverk")
