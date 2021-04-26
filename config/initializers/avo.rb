@@ -50,7 +50,7 @@ Avo.configure do |config|
   # config.home_path = nil
 
   ## == Breadcrumbs ==
-  # config.display_breadcrumbs = true
+  config.display_breadcrumbs = false
   # config.set_initial_breadcrumbs do
   #   add_breadcrumb "Home", '/avo'
   # end

@@ -43,6 +43,7 @@
             <div class="px-4 py-5 flex-auto">
               <span id="kompetanse" class="font-semibold">Kompetansemål</span>
               <p class="mt-2 mb-4 text-gray-600">
+                <%= @kompetansemaal.beskrivelse.html_safe %>
               </p>
             </div>
             <% end %>
@@ -54,11 +55,13 @@
               <p class="mt-2 mb-4 text-black">
                 <span class="font-semibold">Oppgaver: </span>
                 <% if @oppgaver.present? %>
-                <% @oppgaver.each do |oppgave| %>
-                  <p class="font-semibold"><%= oppgave.navn.capitalize %>:</p>
-                  <p><%= oppgave.beskrivelse %></p>
-                  <p class="mt-3"><%= link_to "Last ned oppgave", rails_blob_path(oppgave.file, disposition: "attachment"), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 mr-6 rounded focus:outline-none focus:shadow-outline cursor-pointer" %></p>
-                <% end %>
+                  <% @oppgaver.each do |oppgave| %>
+                    <p class="font-semibold"><%= oppgave.navn.capitalize %>:</p>
+                    <p><%= oppgave.beskrivelse.html_safe %></p>
+                    <% if oppgave.file.present? %>
+                      <p class="mt-3"><%= link_to "Last ned oppgave", rails_blob_path(oppgave.file, disposition: "attachment"), class: "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 mr-6 rounded focus:outline-none focus:shadow-outline cursor-pointer" %></p>
+                    <% end %>
+                  <% end %>
                 <% end %>
               </p>
             </div>
