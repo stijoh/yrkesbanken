@@ -43,7 +43,11 @@
             <div class="px-4 py-5 flex-auto">
               <span id="kompetanse" class="font-semibold">Kompetansemål</span>
               <p class="mt-2 mb-4 text-gray-600">
-                <%= @kompetansemaal.beskrivelse.html_safe %>
+                <% if @kompetansemaal.present?%>
+                <% @kompetansemaal.each do |maal| %>
+                  <p><%= maal.beskrivelse.html_safe  %></p>
+                <% end %>
+                <% end %>
               </p>
             </div>
             <% end %>

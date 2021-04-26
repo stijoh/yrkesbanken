@@ -2,7 +2,7 @@ class PagesController < ApplicationController
 
   def fag
     @fag = Fag.find(params[:id])
-    @kompetansemaal = Kompetansemaal.find(params[:id])
+    @kompetansemaal = Kompetansemaal.where(fag_id: params[:id])
     @yrker = Yrke.where(tema_id: params[:tema])
     @tema = Tema.find(params[:tema]) if params[:tema].present?
     @oppgaver = Oppgaver.where(tema_id: params[:tema])
