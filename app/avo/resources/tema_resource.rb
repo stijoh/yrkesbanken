@@ -6,5 +6,5 @@ class TemaResource < Avo::BaseResource
   field :navn, as: :text
   field :fag, as: :belongs_to
   field :oppgavers, as: :has_many
-  field :yrkes, as: :has_many
+  field :yrkes, as: :has_many, through: :yrke_temas
 end

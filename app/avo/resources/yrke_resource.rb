@@ -4,7 +4,7 @@ class YrkeResource < Avo::BaseResource
 
   field :id, as: :id
   field :navn, as: :text
-  field :tema, as: :belongs_to
+  field :temas, as: :has_many, through: :yrke_temas
   field :materials, as: :has_many
   field :saertrekks, as: :has_many
 end

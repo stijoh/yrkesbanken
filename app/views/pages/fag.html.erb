@@ -26,7 +26,7 @@
                     <span class="pl-4 font-semibold">Yrke:</span>
                     <hr>
                   </div>
-                    <% @yrker.each do |yrke| %>
+                    <% @yrke.each do |yrke| %>
                   <div>
                     <a href="?tema=<%= params[:tema] %>&yrke=<%= yrke.id %>#yrke" class="text-gray-900 hover:text-gray-900 pl-8 font-semibold"><%= yrke.navn %></a>
                   </div>
@@ -72,14 +72,6 @@
             <% end %>
             <% if params[:yrke].present?%>
             <div class="px-4 py-5 flex-auto">
-              <p class="mt-2 mb-4 text-black">
-                <span id="yrke" class="font-semibold">Yrker: </span>
-                <% if @yrker.present?%>
-                <% @yrker.each do |yrke| %>
-                  <p><%= yrke.navn.capitalize %></p>
-                <% end %>
-                <% end %>
-              </p>
             </div>
             <div class="px-4 py-5  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
             <div class="pr-10 font-semibold">Materialer:
