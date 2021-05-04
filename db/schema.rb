@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_075945) do
+ActiveRecord::Schema.define(version: 2021_05_04_143038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,9 +128,18 @@ ActiveRecord::Schema.define(version: 2021_04_20_075945) do
     t.index ["yrke_id"], name: "index_verktoys_on_yrke_id"
   end
 
+  create_table "yrke_temas", force: :cascade do |t|
+    t.bigint "yrke_id", null: false
+    t.bigint "tema_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tema_id"], name: "index_yrke_temas_on_tema_id"
+    t.index ["yrke_id"], name: "index_yrke_temas_on_yrke_id"
+  end
+
   create_table "yrkes", force: :cascade do |t|
     t.string "navn"
-    t.bigint "tema_id", null: false
+    t.bigint "tema_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tema_id"], name: "index_yrkes_on_tema_id"
@@ -146,5 +155,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_075945) do
   add_foreign_key "teknikks", "yrkes"
   add_foreign_key "temas", "fags"
   add_foreign_key "verktoys", "yrkes"
+  add_foreign_key "yrke_temas", "temas"
+  add_foreign_key "yrke_temas", "yrkes"
   add_foreign_key "yrkes", "temas"
 end

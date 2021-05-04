@@ -3,7 +3,10 @@ class PagesController < ApplicationController
   def fag
     @fag = Fag.find(params[:id])
     @kompetansemaal = Kompetansemaal.where(fag_id: params[:id])
-    @yrker = Yrke.where(tema_id: params[:tema])
+    @yrke = []
+    YrkeTema.where(tema_id: params[:tema]).each do |y|
+      @yrke << Yrke.find(y.yrke.id)
+    end
     @tema = Tema.find(params[:tema]) if params[:tema].present?
     @oppgaver = Oppgaver.where(tema_id: params[:tema])
     @materialer = Material.where(yrke_id: params[:yrke])
