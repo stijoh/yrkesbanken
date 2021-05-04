@@ -1,5 +1,5 @@
 class VerktoyResource < Avo::BaseResource
-  self.title = :name
+  self.title = :navn
   self.includes = []
 
   field :id, as: :id
