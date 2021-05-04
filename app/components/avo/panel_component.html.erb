@@ -7,7 +7,7 @@
         </div>
       <% end %>
       <div class="text-2xl tracking-normal font-bold text-gray-800 truncate">
-        <%= @title.singularize %>
+        <%= @title.instance_of?(String) ? @title.singularize : @title %>
       </div>
     </div>
 
