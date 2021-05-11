@@ -55,7 +55,7 @@
             </div>
             <div class="px-4 py-5">
               <p class="mt-2 mb-4 text-black">
-                <span class="font-semibold">Oppgave: </span>
+                <span class="font-semibold" id="yrke">Oppgave: </span>
                 <% if @oppgaver.present? %>
                   <% @oppgaver.each do |oppgave| %>
                     <p class="font-semibold"><%= oppgave.navn.capitalize %>:</p>
@@ -71,7 +71,7 @@
             <% if params[:yrke].present?%>
             <div class="px-4 py-5 flex-auto">
             </div>
-            <div class="px-4 py-5  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5" id="yrke">
+            <div class="px-4 py-5  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5">
             <div class="pr-10 font-semibold">Materialer:
               <ul class="font-normal pt-2 pb-4">
                 <% if @materialer.present? %>
