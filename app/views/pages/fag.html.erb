@@ -3,32 +3,30 @@
 <section class="pb-20 bg-purple-200 -mt-24">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
-        <div class="w-full md:w-4/12 lg:w-3/12 px-4">
-          <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg sticky top-5">
+        <div class="w-full md:w-5/12 lg:w-3/12 px-4">
+          <div class="relative flex flex-col min-w-200 bg-white w-full mb-8 shadow-lg rounded-lg sticky top-5">
             <div class="px-4 py-5 flex-auto">
               <h6 class="text-xl font-semibold"><%= @fag.navn.capitalize %></h6>
               <p class="mt-2 mb-4 text-gray-600">
                 <div class=" pr-4">
                   <div>
-                    <a href="/fag/<%= @fag.id %>#kompetanse" class="text-black-900 hover:text-gray-900 font-semibold pl-4">Kompetansemål</a>
+                    <a href="/fag/<%= @fag.id %>#kompetanse" class="text-black-900 hover:text-gray-500 font-semibold pl-4">Kompetansemål</a>
                   </div>
                   <div class="mt-2">
                     <span class="pl-4 font-semibold">Tema:</span>
-                    <hr>
                   </div>
                     <% @fag.temas.each do |tema| %>
                   <div>
-                    <a href="?tema=<%= tema.id %>#tema"  class="text-gray-900 hover:text-gray-900 font-semibold pl-8"><%= tema.navn.capitalize %></a>
+                    <a href="?tema=<%= tema.id %>#tema"  class="text-gray-700 hover:text-gray-500 font-medium pl-8"><%= tema.navn.capitalize %></a>
                   </div>
                     <% end %>
                     <% if params[:tema].present? %>
                   <div class="mt-2">
                     <span class="pl-4 font-semibold">Yrke:</span>
-                    <hr>
                   </div>
                     <% @yrke.each do |yrke| %>
                   <div>
-                    <a href="?tema=<%= params[:tema] %>&yrke=<%= yrke.id %>#yrke" class="text-gray-900 hover:text-gray-900 pl-8 font-semibold"><%= yrke.navn %></a>
+                    <a href="?tema=<%= params[:tema] %>&yrke=<%= yrke.id %>#yrke" class="text-gray-700 hover:text-gray-500 pl-8 font-medium"><%= yrke.navn %></a>
                   </div>
                     <% end %>
                     <% end %>
@@ -37,7 +35,7 @@
             </div>
           </div>
         </div>
-        <div class="w-full md:w-8/12 lg:w-9/12 px-4">
+        <div class="w-full md:w-7/12 lg:w-9/12 px-4">
           <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
             <% if !params[:tema].present?%>
             <div class="px-4 py-5 flex-auto">
@@ -57,7 +55,7 @@
             </div>
             <div class="px-4 py-5">
               <p class="mt-2 mb-4 text-black">
-                <span class="font-semibold">Oppgaver: </span>
+                <span class="font-semibold">Oppgave: </span>
                 <% if @oppgaver.present? %>
                   <% @oppgaver.each do |oppgave| %>
                     <p class="font-semibold"><%= oppgave.navn.capitalize %>:</p>
@@ -73,46 +71,46 @@
             <% if params[:yrke].present?%>
             <div class="px-4 py-5 flex-auto">
             </div>
-            <div class="px-4 py-5  grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+            <div class="px-4 py-5  grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5" id="yrke">
             <div class="pr-10 font-semibold">Materialer:
-              <ul class="font-normal pl-3 pb-4">
+              <ul class="font-normal pt-2 pb-4">
                 <% if @materialer.present? %>
                 <% @materialer.each do |material|%>
-                <li>- <%= material.navn.capitalize %></li>
+                <li></i> <%= material.navn.capitalize %></li>
                 <% end %>
                 <% end %>
               </ul>
             </div>
             <div class="pr-10 font-semibold">Teknikker:
-              <ul class="font-normal pl-3 pb-4">
+              <ul class="font-normal pt-2 pb-4">
                 <% @teknikker.each do |teknikk|%>
-                  <li>- <%= teknikk.navn.capitalize %></li>
+                  <li></i> <%= teknikk.navn.capitalize %></li>
                 <% end %>
               </ul>
             </div>
             <div class="pr-10 font-semibold">Verktøy:
-              <ul class="font-normal pl-3 pb-4">
+              <ul class="font-normal pt-2 pb-4">
                 <% if @verktoy.present? %>
                 <% @verktoy.each do |verk|%>
-                  <li>- <%= verk.navn.capitalize %></li>
+                  <li></i> <%= verk.navn.capitalize %></li>
                 <% end %>
                 <% end %>
               </ul>
             </div>
             <div class="pr-10 font-semibold">Fagutrykk:
-              <ul class="font-normal pl-3 pb-4">
+              <ul class="font-normal pt-2 pb-4">
                 <% if @fagutrykk.present? %>
                 <% @fagutrykk.each do |fagutrk|%>
-                  <li>- <%= fagutrk.navn.capitalize %></li>
+                  <li></i> <%= fagutrk.navn.capitalize %></li>
                 <% end %>
                 <% end %>
               </ul>
             </div>
             <div class="pr-10 font-semibold">Særtrekk:
-              <ul class="font-normal pl-3 pb-4">
+              <ul class="font-normal pt-2 pb-4">
                 <% if @saertrekk.present? %>
                 <% @saertrekk.each do |saertrk|%>
-                  <li>- <%= saertrk.navn.capitalize %></li>
+                  <li></i> <%= saertrk.navn.capitalize %></li>
                 <% end %>
                 <% end %>
               </ul>
